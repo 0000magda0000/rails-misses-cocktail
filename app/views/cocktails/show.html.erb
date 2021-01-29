@@ -1,0 +1,14 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo.key, crop: :scale%>');">
+  <div class="container banner">
+    <h1 class="gaps yellow"><%= @cocktail.name %></h1>
+    <%= link_to 'edit ingredients', edit_cocktail_path(@cocktail), class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="container doses">
+  <% @cocktail.ingredients.zip(@cocktail.doses).each do |ingredient, dose| %>
+    <p><%= "#{ingredient.name}: #{dose.description}"%></p>
+  <% end %>
+
+  <p><%= link_to "go back", root_path, class: "btn btn-light" %></p>
+</div>
